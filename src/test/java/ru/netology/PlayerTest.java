@@ -116,6 +116,24 @@ public class PlayerTest {
     }
 
     @Test
+    public void shouldSumGenreInSeveralGamesWithRepeat() {
+
+        Player player = new Player("Petya");
+        player.installGame(game1);
+        player.installGame(game2);
+        player.installGame(game3);
+        player.play(game1, 3);
+        player.play(game2, 1);
+        player.play(game3, 4);
+        player.play(game1, 2);
+
+        int expected = 10;
+        int actual = player.sumGenre(game1.getGenre());
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldNotSumDifferentGenre() {
 
         Player player = new Player("Petya");
