@@ -68,7 +68,7 @@ public class GameStoreTest {
         GameStore store = new GameStore();
         Game game = store.publishGame("Call of duty", "Стратегия");
 
-        store.addPlayTime("Alena", 0);
+        store.addPlayTime("Alena", 1);
 
         String actual = store.getMostPlayer();
         String expected = "Alena";
