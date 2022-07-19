@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class GameStoreTest {
 
     @Test
-    public void AddGame() {
+    public void shouldAddGame() {
 
         GameStore store = new GameStore();
         Game game = store.publishGame("Зума", "Аркады");
@@ -15,7 +15,7 @@ public class GameStoreTest {
     }
 
     @Test
-    public void AddGames() {
+    public void shouldReturnFalseAddGames() {
 
         GameStore store = new GameStore();
         Game game = store.publishGame("Зума", "Аркады");
@@ -25,7 +25,7 @@ public class GameStoreTest {
     }
 
     @Test
-    public void ContainsGame() {
+    public void shouldReturnFalseContainsGame() {
 
         GameStore store = new GameStore();
 
@@ -35,7 +35,7 @@ public class GameStoreTest {
     }
 
     @Test
-    public void MostPlayer() {
+    public void shouldGetMostPlayer() {
 
         GameStore store = new GameStore();
 
@@ -49,34 +49,34 @@ public class GameStoreTest {
         assertEquals(expected, actual);
     }
     @Test
-    public void MostPlayer2() {
+    public void shouldGetMostPlayerFour() {
 
         GameStore store = new GameStore();
 
         store.addPlayTime("Alena", 3);
         store.addPlayTime("Slava", 9);
         store.addPlayTime("Chester", 6);
-
+        store.addPlayTime("Chester", 10);
 
         String actual = store.getMostPlayer();
-        String expected = "Slava";
+        String expected = "Chester";
         assertEquals(expected, actual);
     }
     @Test
-    public void MostPlayerEqualsZero() {
+    public void shouldGetMostPlayerEqualsZero() {
 
         GameStore store = new GameStore();
         Game game = store.publishGame("Call of duty", "Стратегия");
 
-        store.addPlayTime("Alena", 1);
+        store.addPlayTime("Alena", 0);
 
         String actual = store.getMostPlayer();
-        String expected = "Alena";
+        String expected = null;
         assertEquals(expected, actual);
     }
 
     @Test
-    public void MostPlayerReturnNull() {
+    public void shouldGetMostPlayerReturnNull() {
 
         GameStore store = new GameStore();
 
@@ -86,7 +86,7 @@ public class GameStoreTest {
     }
 
     @Test
-    public void MostPlayerNegativeValue() {
+    public void shouldReturnNullGetMostPlayerNegativeValue() {
 
         GameStore store = new GameStore();
         Game game = store.publishGame("Call of duty", "Стратегия");
@@ -99,12 +99,12 @@ public class GameStoreTest {
     }
 
     @Test
-    public void RegisteredAddPlayTime() {
+    public void shouldRegisteredAddPlayTime() {
 
         GameStore store = new GameStore();
 
         store.addPlayTime("Alena", 4);
-        store.addPlayTime("Alex", 2);
+        store.addPlayTime("Alena", 2);
 
 
         String actual = store.getMostPlayer();
@@ -113,19 +113,20 @@ public class GameStoreTest {
     }
 
     @Test
-    public void PlayerEquallyOne() {
+    public void  shouldGetMostPlayerEquallyOne() {
 
         GameStore store = new GameStore();
 
-        store.addPlayTime("Alex", 2);
-
+        store.addPlayTime("Alex", 10);
+        store.addPlayTime("Slava",2 );
+        store.addPlayTime("Chester", 10);
         String actual = store.getMostPlayer();
         String expected = "Alex";
         assertEquals(expected, actual);
     }
 
     @Test
-    public void SumPlayedTime() {
+    public void  shouldGetSumPlayedTime() {
 
         GameStore store = new GameStore();
 
@@ -139,7 +140,7 @@ public class GameStoreTest {
     }
 
     @Test
-    public void ZeroGetSumPlayedTime() {
+    public void shouldReturnZeroGetSumPlayedTime() {
 
         GameStore store = new GameStore();
 
@@ -149,7 +150,7 @@ public class GameStoreTest {
     }
 
     @Test
-    public void SumZeroPlayedTime() {
+    public void shouldGetSumZeroPlayedTime() {
 
         GameStore store = new GameStore();
 
@@ -164,7 +165,7 @@ public class GameStoreTest {
     }
 
     @Test
-    public void SumOnePlayedTime() {
+    public void shouldGetSumOnePlayedTime() {
 
         GameStore store = new GameStore();
 
