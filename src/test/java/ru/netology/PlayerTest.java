@@ -181,7 +181,7 @@ public class PlayerTest {
         player.play(game3, 4);
 
         Game expected = game3;
-        String actual = player.mostPlayerByGenre("Аркады");
+        Game actual = player.mostPlayerByGenre("Аркады");
 
         assertEquals(expected, actual);
     }
@@ -197,7 +197,7 @@ public class PlayerTest {
         player.play(game1, 1);
 
         Game expected = null;
-        String actual = player.mostPlayerByGenre("Стратегия");
+        Game actual = player.mostPlayerByGenre("Стратегия");
 
         assertEquals(null, actual);
     }
